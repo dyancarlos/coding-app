@@ -1,0 +1,4 @@
+<%= form_with model: @form, url: weathers_path, method: :post, data: { turbo_frame: 'weather' } do |f| %>
+  <%= f.text_field :address %>
+  <%= f.submit 'Send' %>
+<% end %>
