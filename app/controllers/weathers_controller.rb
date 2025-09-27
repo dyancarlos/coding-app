@@ -6,8 +6,10 @@ class WeathersController < ApplicationController
   def create
     @form = WeatherForm.new(weather_form)
 
-    respond_to do |format|
-      format.turbo_stream
+    if @form.valid?
+      respond_to do |format|
+        format.turbo_stream
+      end
     end
   end
 

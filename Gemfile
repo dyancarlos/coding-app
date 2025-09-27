@@ -13,11 +13,13 @@ gem "solid_queue"
 gem "solid_cable"
 gem "bootsnap", require: false
 gem "thruster", require: false
+gem "geocoder"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
+  gem "rspec-rails", "~> 8.0.0"
 end
 
 group :test do
