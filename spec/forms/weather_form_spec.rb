@@ -11,6 +11,11 @@ RSpec.describe WeatherForm do
     expect(form.postcode).to be_nil
   end
 
+  it "does not returns postcode for random letters address" do
+    form = WeatherForm.new(address: "dasdas")
+    expect(form.postcode).to be_nil
+  end
+
   it "validates blank address" do
     form = WeatherForm.new(address: "")
     expect(form.valid?).to be_falsey

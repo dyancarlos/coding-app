@@ -7,9 +7,13 @@ class WeathersController < ApplicationController
     @form = WeatherForm.new(weather_form)
 
     if @form.valid?
+      @service = WeatherService.new(@form.postcode).call
+
       respond_to do |format|
         format.turbo_stream
       end
+    else
+      render :new
     end
   end
 

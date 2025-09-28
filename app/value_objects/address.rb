@@ -12,10 +12,13 @@ class Address
   private
 
   def address_object
-    OpenStruct.new(geocoder_search["address"])
+    OpenStruct.new(geocoder_search&.fetch("address"))
   end
 
   def geocoder_search
-    Geocoder.search(@address).first.data
+    geocoder = Geocoder.search(@address).first
+    if geocoder
+      geocoder.data
+    end
   end
 end

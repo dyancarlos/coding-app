@@ -1,3 +1,8 @@
 <turbo-frame id="weather_result">
-  <%= form.address %>
+  <% if @service.success? %>
+    <p>Temp: <%= @service.object.temp %></p>
+    <p>Min: <%= @service.object.temp_min %></p>
+  <% else %>
+    <%= @service.object %>
+  <% end %>
 </turbo-frame>
