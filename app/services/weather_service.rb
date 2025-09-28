@@ -21,7 +21,9 @@ class WeatherService
   private
 
   def fetch_forecast
-    HTTParty.get(URL, query: forecast_params)
+    Rails.cache.fetch("forecast/#{@postcode}", expires_in: 30.minutes) do
+      JSON.parse(HTTParty.get(URL, query: forecast_params).to_json)
+    end
   end
 
   def forecast_params

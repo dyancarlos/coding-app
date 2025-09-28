@@ -12,6 +12,6 @@ class WeatherForm
   private
 
   def full_address
-    Address.new(address)
+    @full_address ||= Address.new(address)
   end
 end
