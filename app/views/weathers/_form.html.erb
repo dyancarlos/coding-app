@@ -1,4 +1,16 @@
-<%= form_with model: @form, url: weathers_path, method: :post, data: { turbo_frame: 'weather' } do |f| %>
-  <%= f.text_field :address %>
-  <%= f.submit 'Send' %>
-<% end %>
+<div class="row p-3">
+  <h2>Weather forecast search by address:</h2>
+  <p><small>Example: 436-444 Bergen St, Brooklyn, NY, EUA</small></p>
+  <%= form_with model: @form, url: weathers_path, method: :post, data: { turbo_frame: 'weather' } do |f| %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <%= f.text_field :address, class: "form-control" %>
+        </div>
+        <div class="col-1">
+          <%= f.submit "Search", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

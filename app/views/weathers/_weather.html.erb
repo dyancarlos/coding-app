@@ -1,8 +1,18 @@
 <turbo-frame id="weather_result">
-  <% if @service.success? %>
-    <p>Temp: <%= @service.object.temp %></p>
-    <p>Min: <%= @service.object.temp_min %></p>
-  <% else %>
-    <%= @service.object %>
-  <% end %>
+  <div class="row justify-content-center text-center">
+    <% if @service.success? %>
+      <div class="col-3 bg-light m-2 p-5 h4 rounded border border-success">
+        <p>Temperature:</p>
+        <p><%= number_with_precision(@service.object.temp / 10, precision: 1) %>℃</p>
+      </div>
+      <div class="col-3 bg-light m-2 p-5 h4 rounded border border-success">
+        <p>Min. Temperature:</p>
+        <p><%= number_with_precision(@service.object.temp_min / 10, precision: 1) %>℃</p>
+      </div>
+    <% else %>
+      <div class="alert alert-danger" role="alert">
+        <%= @service.object %>
+      </div>
+    <% end %>
+  </div>
 </turbo-frame>
